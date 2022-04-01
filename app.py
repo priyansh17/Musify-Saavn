@@ -15,6 +15,18 @@ def home():
     return redirect("https://github.com/priyansh17/Musify-Saavn/blob/main/README.md")
 
 
+@app.route('/home/')
+def home():
+    try:
+        return jsonify(jiosaavn.homepage())
+    except:
+        error = {
+            "status": False,
+            "error": 'Could not fetch right now. Try again later.'
+        }
+        return jsonify(error)
+
+
 @app.route('/song/')
 def search():
     lyrics = False
