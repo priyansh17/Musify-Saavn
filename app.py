@@ -14,6 +14,15 @@ CORS(app)
 def home():
     return redirect("https://github.com/priyansh17/Musify-Saavn/blob/main/README.md")
 
+@app.route('/moods/')
+def mood():
+    # test = {
+    #     "status": False,
+    #     "error": 'test'
+    # }
+    # jiosaavn.genresSearch()
+    # return jsonify(test)
+    return jsonify(jiosaavn.genresSearch())
 
 @app.route('/song/')
 def search():

@@ -4,6 +4,15 @@ import helper
 import json
 from traceback import print_exc
 
+#chose mood
+def genresSearch():
+    search_base_url = endpoints.homepage_url
+    response = requests.get(search_base_url).text.encode()
+    response = json.loads(response)
+    new_albums = response['genres']
+    print(new_albums)
+    return new_albums
+
 def search_for_song(query,lyrics,songdata):
     if query.startswith('http') and 'saavn.com' in query:
         id = get_song_id(query)
