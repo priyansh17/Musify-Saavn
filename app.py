@@ -4,6 +4,7 @@ import jiosaavn
 import os
 from traceback import print_exc
 from flask_cors import CORS
+import genres
 
 app = Flask(__name__)
 app.secret_key = os.environ.get("SECRET", 'thankyoutonystark#weloveyou3000')
@@ -22,7 +23,8 @@ def mood():
     # }
     # jiosaavn.genresSearch()
     # return jsonify(test)
-    return jsonify(jiosaavn.genresSearch())
+    #return jsonify(jiosaavn.genresSearch())
+    return jsonify(genres.returnGenres())
 
 @app.route('/song/')
 def search():
