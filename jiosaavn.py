@@ -13,6 +13,7 @@ def genresSearch():
     print(new_albums)
     return new_albums
 
+
 def search_for_song(query,lyrics,songdata):
     if query.startswith('http') and 'saavn.com' in query:
         id = get_song_id(query)

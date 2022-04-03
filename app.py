@@ -1,5 +1,7 @@
-from flask import Flask, request, redirect, jsonify, json
-import time
+from flask import Flask, request, redirect, jsonify
+
+import chartsResponse
+import feedArtist
 import jiosaavn
 import os
 from traceback import print_exc
@@ -15,16 +17,21 @@ CORS(app)
 def home():
     return redirect("https://github.com/priyansh17/Musify-Saavn/blob/main/README.md")
 
+
+@app.route('/artists/')
+def artists():
+    return feedArtist.returnArtists()
+
+
 @app.route('/moods/')
 def mood():
-    # test = {
-    #     "status": False,
-    #     "error": 'test'
-    # }
-    # jiosaavn.genresSearch()
-    # return jsonify(test)
-    #return jsonify(jiosaavn.genresSearch())
     return jsonify(genres.returnGenres())
+    #return jsonify(jiosaavn.genresSearch())
+
+@app.route('/charts/')
+def charts():
+    return chartsResponse.getCharts()
+
 
 @app.route('/song/')
 def search():

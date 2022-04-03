@@ -1,5 +1,7 @@
-Flask
+Flask~=2.1.0
 gunicorn
-requests
-pyDes
+requests~=2.27.1
+pyDes~=2.0.1
 flask-cors
+
+pandas~=1.4.1
