@@ -2,6 +2,7 @@ from flask import Flask, request, redirect, jsonify
 
 import chartsResponse
 import feedArtist
+import feedHomepage
 import jiosaavn
 import os
 from traceback import print_exc
@@ -16,6 +17,11 @@ CORS(app)
 @app.route('/')
 def home():
     return redirect("https://github.com/priyansh17/Musify-Saavn/blob/main/README.md")
+
+
+@app.route('/homepage/')
+def getHomepage():
+    return feedHomepage.getHomePage()
 
 
 @app.route('/artists/')
