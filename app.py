@@ -14,6 +14,24 @@ app.secret_key = os.environ.get("SECRET", 'thankyoutonystark#weloveyou3000')
 CORS(app)
 
 
+@app.route('/playlist/')
+def playlist():
+    lyrics = False
+    listId = request.args.get('listId')
+    lyrics_ = request.args.get('lyrics')
+    if lyrics_ and lyrics_.lower() != 'false':
+        lyrics = True
+    if listId:
+        songs = jiosaavn.get_playlist(listId, lyrics)
+        return jsonify(songs)
+    else:
+        error = {
+            "status": False,
+            "error": 'Query is required to search playlists!'
+        }
+        return jsonify(error)
+
+
 @app.route('/')
 def home():
     return redirect("https://github.com/priyansh17/Musify-Saavn/blob/main/README.md")
@@ -32,7 +50,8 @@ def artists():
 @app.route('/moods/')
 def mood():
     return jsonify(genres.returnGenres())
-    #return jsonify(jiosaavn.genresSearch())
+    # return jsonify(jiosaavn.genresSearch())
+
 
 @app.route('/charts/')
 def charts():
@@ -85,8 +104,8 @@ def get_song():
         return jsonify(error)
 
 
-@app.route('/playlist/')
-def playlist():
+@app.route('/playlist1/')
+def playlist1():
     lyrics = False
     query = request.args.get('query')
     lyrics_ = request.args.get('lyrics')
